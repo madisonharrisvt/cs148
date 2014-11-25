@@ -1,0 +1,415 @@
+/* CSS designed by Robert Erickson
+to understand the comments like 900px / 960px
+read http://alistapart.com/article/responsive-web-design/
+*/
+/***************** main layout section ************************/
+*{
+    font-family:'Lato', sans-serif;
+}
+
+body{
+    margin: 36px auto;
+    background-color:#FFFFFF;
+
+    width: 100%; 
+    height: 100%; 
+
+}
+
+#holder {
+    margin: 50px auto;
+    width: 100px;
+    height: 100px;
+    position: relative;
+
+}
+.pulse {
+    width: 25px;
+    height: 25px;
+    border: 5px solid #7AB87A;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background-color: #7AB87A;
+    z-index: 10;
+    position: absolute;
+    left: 40px;
+    top: 40px;
+}
+.dot {
+    border: 10px solid #99E699;
+    background: transparent;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+    height: 100px;
+    width: 100px;
+    -webkit-animation: pulse 3s ease-out;
+    -moz-animation: pulse 3s ease-out;
+    animation: pulse 3s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    z-index: 1;
+    opacity: 0;
+}
+@-moz-keyframes pulse {
+ 0% {
+    -moz-transform: scale(0);
+    opacity: 0.0;
+ }
+ 25% {
+    -moz-transform: scale(0);
+    opacity: 0.1;
+ }
+ 50% {
+    -moz-transform: scale(0.1);
+    opacity: 0.3;
+ }
+ 75% {
+    -moz-transform: scale(0.5);
+    opacity: 0.5;
+ }
+ 100% {
+    -moz-transform: scale(1);
+    opacity: 0.0;
+ }
+}
+@-webkit-keyframes "pulse" {
+ 0% {
+    -webkit-transform: scale(0);
+    opacity: 0.0;
+ }
+ 25% {
+    -webkit-transform: scale(0);
+    opacity: 0.1;
+ }
+ 50% {
+    -webkit-transform: scale(0.1);
+    opacity: 0.3;
+ }
+ 75% {
+    -webkit-transform: scale(0.5);
+    opacity: 0.5;
+ }
+ 100% {
+    -webkit-transform: scale(1);
+    opacity: 0.0;
+ }
+}
+ 
+
+nav ol{
+    list-style-type: none;
+    /*background-color: #FFD633;*/
+    padding: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0em;
+    text-align: center;
+}
+#page{
+    margin: 0 auto 53px;
+    width: 93.75%; /* 900px / 960px */
+    border: 1px solid black;
+    border-radius: 15px;
+}
+#main{
+    float: left;
+    width: 62.8888889%; /* 566px / 900px */
+    background-color: #3A703A;
+    margin: 1em;
+}
+#other{
+    float: right;
+    width: 36.7777778%; /* 331px / 900px */
+}
+/***************** header section *****************************/
+
+
+header h1 {
+    padding: 0.5em 5.33333333%; /* 48px / 900px */
+    background-color: #000000;
+    color: #FFFFFF;
+    opacity: 0.7;
+    filter: alpha(opacity=70); /* For IE8 and earlier */
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-size: 5em;
+
+}
+
+h2{
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    background-color: #FFFFFF;
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+    font-weight: 400;
+    padding: 0.5em;
+    color:#000;
+}
+/***************** navigation section *****************************/
+
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+/***************** article section ****************************/
+/* un comment and see what happens */
+/*
+article{
+height: 200px;
+overflow: auto;
+}
+*/
+article h1, article p, article table{
+    padding: .2em 8.48056537% .2em 8.48056537%; /* 48px / 566px */
+    text-align: center;
+}
+/***************** aside section *****************************/
+aside {
+    margin: 0 auto;
+    width: 69.7885196%; /* 231px / 331px */
+}
+aside h2, aside p{
+    padding: .2em 8.48056537% .2em 8.48056537%; /* 48px / 566px */
+}
+/***************** footer section ****************************/
+footer{
+    clear: both;
+    padding: 0.8em 5.33333333%; /* 48px / 900px */
+    background-color: #000000;
+    padding: 1em;
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+/***************** form section ****************************/
+#index article#main, a{
+    border-radius: 20px;
+    background-color: #314827;
+    color: #FFFFFF;
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+}
+#index article#main{
+    float: none;
+    margin: auto; /* because of the fixed width this centers the form */
+    text-align: left;
+    max-width: 600px; /* not repsonive but fixed */
+    
+}
+
+#btnSubmit{
+    border-radius: 5px;
+    font-size: 15pt;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+li{
+    display: inline;
+}
+
+p.registerParagraph{
+    font-style: italic;
+    font-size: 15pt;
+}
+
+form{
+    padding: 1em;
+}
+
+/* need to clear any floats that may exist */
+fieldset{
+    border: 1px solid #FFFFFF;
+    clear: both;
+}
+/* just pushes content to left side of the box. */
+fieldset.register{
+    float: left;
+    background-color: #246E00;
+    border-radius: 5px;
+}
+/* when you look at the labels this pushes then next to the input and right
+aligns them. Display block means they are each on their own line. */
+fieldset.register label{
+    display: block;
+    text-align: right /* pushes the text to the right where they line up */
+        /* the float left above pushes everything back to the left*/
+}
+fieldset.register input, fieldset.register select{
+    width: 25em; /* works with above to be the same size for the boxes */
+}
+fieldset.buttons{
+    border: none;
+    text-align: center;
+}
+fieldset.wrapper {
+    border: 0;
+    margin: auto;
+
+}
+fieldset.wrapper legend {
+    color: #FFFFFF;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+fieldset.wrapper > legend {
+    /* i only want the first legend ie if it follows the class wrapper */
+    font-size: 2em;
+}
+label {
+    color: #FFFFFF;
+    display: block;
+    font-size: .9em;
+    font-weight: bold;
+}
+/* style the errors in the form so they are visible */
+.mistake {
+    color: #fff;
+    background-color:#800;
+}
+/* style the list of errors that will show before the form */
+#errors ol li{
+    color: #ff5555;
+    list-style-type: none;
+    text-align: center;
+    font-weight: 900;
+    padding-top: 1em;
+    font-size: 15pt;
+}
+
+/* table style */
+table{
+    margin-left: auto;
+    margin-right: auto;
+    overflow:hidden;
+    border-radius:10px;
+    -moz-border-radius:10px;
+    border-collapse: collapse;
+}
+table, tr, td,th {
+    /*border-bottom: solid ;*/
+    padding: 0.20em;
+}
+
+
+
+td{
+    padding-left: 0.5em;
+}
+
+td:nth-child(4), td:nth-child(9){
+    text-align: center;
+}
+tr:nth-child(odd){
+    background: #7EA068;
+}
+tr:nth-child(even){
+    background: #5F8249;
+} 
+tr:hover{
+    background: #42662C;
+    color: #D9DAD3;
+}
+tbody{
+    /*   display:block;
+       height: 10em;
+       overflow: auto;*/
+}
+
+footer p {
+    font-size: small;
+    color: #FFFFFF;
+}
+
+footer{
+    margin-top:2em;
+}
+
+label.required{
+    padding: 0.25em;
+}
+
+#txtDepartmentName, #txtCourseNumber, #txtBuilding, #txtTime, #txtLastName, #txtClassType,#txtEmail{
+    border-radius: 5px;
+    padding: 0.35em;
+}
+
+#btnSubmit{
+    color: white;
+    border: 0;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    padding-right:2em;
+    padding-left: 2em;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px #1E6912;
+    background: #5F8249; 
+    font-size: 15pt;
+    margin-top: 1em;
+}
+
+#btnSubmit:hover{
+    background: #7EA068;
+}
+
+#btnSubmit:active{
+    background: #42662C;
+}
+
+#query{
+    text-align: center;
+    margin-left:4em;
+    margin-right:4em; 
+    padding:0.5em;
+    color: #FFFFFF;
+    text-shadow: 0 1px 1px #1E6912;
+    font-size: 20pt;
+    font-weight: 100;
+    font-style: italic;
+    border: solid 1px white;
+    opacity: 0.7;
+    filter: alpha(opacity=70); /* For IE8 and earlier */
+}
+
+#goldbutton {
+    background-color: #F7A416;
+    text-shadow: 0 1px 1px #B67300;
+    border-radius: 10px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 5em;
+    padding-right: 5em;
+    color: #FFFFFF;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+#goldbutton:hover {
+    background-color: #D48602;
+    color: #FFFFFF;
+}
+
+#goldbutton:active {
+    background-color: #FAB53F;
+    color: #FFFFFF;
+}
