@@ -105,11 +105,13 @@ body{
 nav ol{
     list-style-type: none;
     /*background-color: #FFD633;*/
-    padding: 1em;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 0em;
+    margin-top: 1em;
     text-align: center;
+    border-style: solid;
+    border-color: #FFFFFF;
+    border-bottom: thin solid #000;
 }
 #page{
     margin: 0 auto 53px;
@@ -131,14 +133,12 @@ nav ol{
 
 
 header h1 {
-    padding: 0.5em 5.33333333%; /* 48px / 900px */
-    background-color: #000000;
-    color: #FFFFFF;
-    opacity: 0.7;
-    filter: alpha(opacity=70); /* For IE8 and earlier */
+    color: #000;
     font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
+    font-weight: 100;
     font-size: 5em;
+    text-align: center;
+    margin: 0em;
 
 }
 
@@ -179,7 +179,7 @@ height: 200px;
 overflow: auto;
 }
 */
-article h1, article p, article table{
+article p, article table{
     padding: .2em 8.48056537% .2em 8.48056537%; /* 48px / 566px */
     text-align: center;
 }
@@ -203,7 +203,6 @@ footer{
 /***************** form section ****************************/
 #index article#main, a{
     border-radius: 20px;
-    background-color: #314827;
     color: #FFFFFF;
     opacity: 0.8;
     filter: alpha(opacity=80); /* For IE8 and earlier */
@@ -382,7 +381,7 @@ label.required{
     margin-right:4em; 
     padding:0.5em;
     color: #FFFFFF;
-    text-shadow: 0 1px 1px #1E6912;
+    text-shadow: 0 1px 1px #E6E6E6;
     font-size: 20pt;
     font-weight: 100;
     font-style: italic;
@@ -392,24 +391,32 @@ label.required{
 }
 
 #goldbutton {
-    background-color: #F7A416;
-    text-shadow: 0 1px 1px #B67300;
-    border-radius: 10px;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    padding-left: 5em;
-    padding-right: 5em;
-    color: #FFFFFF;
-    font-size: 30px;
-    font-weight: 900;
+    background-color: #FFFFFF;
+    text-shadow: 0 1px 1px #E6E6E6;
+    border-top-left-radius:1em;
+    border-top-right-radius:1em;
+    -webkit-border-top-right-radius:1em;
+    -webkit-border-top-left-radius:1em;
+    -moz-border-radius-topright:1em;
+    -moz-border-radius-topleft:1em;
+    border: thin solid #000;
+    padding-top: 0.25em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    color: #000000;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 #goldbutton:hover {
-    background-color: #D48602;
+    background-color: #E6E6E6;
     color: #FFFFFF;
+    border-bottom: #FFF;
 }
 
 #goldbutton:active {
-    background-color: #FAB53F;
+    background-color: #CFCFCF;
     color: #FFFFFF;
+    border-bottom: #FFF;
 }

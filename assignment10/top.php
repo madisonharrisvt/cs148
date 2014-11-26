@@ -67,7 +67,7 @@
 
 
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:100,400,900,100italic,400italic">
-        <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:300,400' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="style.css" type="text/css" media="screen">
     </head>
     <!-- ################ body section ######################### -->
