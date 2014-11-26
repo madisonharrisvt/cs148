@@ -132,6 +132,7 @@ nav ol{
 /***************** header section *****************************/
 
 
+
 header h1 {
     color: #000;
     font-family: 'Josefin Sans', sans-serif;
@@ -407,16 +408,17 @@ label.required{
     font-size: 20px;
     font-weight: 400;
     font-family: 'Josefin Sans', sans-serif;
+    margin:1pt;
 }
 
 #goldbutton:hover {
-    background-color: #E6E6E6;
+    background-color: #686868;
     color: #FFFFFF;
     border-bottom: #FFF;
 }
 
 #goldbutton:active {
-    background-color: #CFCFCF;
+    background-color: #2A2A2A;
     color: #FFFFFF;
     border-bottom: #FFF;
 }
