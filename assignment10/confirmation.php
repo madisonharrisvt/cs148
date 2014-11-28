@@ -12,12 +12,13 @@
  * 
  * 
  */
-
+session_start();
 include "top.php";
+include "loggedIn.php";
 
 print '<article id="main">';
 
-print '<h1>Registration Confirmation</h1>';
+print '<h1 id = "requestProcessed">Registration Confirmation</h1>';
 
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
@@ -129,7 +130,7 @@ if (isset($_GET["q"])) {
         $bcc = "";
         $from = "NOT WRONG site <noreply@yoursite.com>";
         $subject = "Bobs PLH Registration Confirmed";
-        $message = "<p>Thank you for taking the time to confirm your registration.  Your account is now active.</p>";
+        $message = "<p id = 'confirmationText'>Thank you for taking the time to confirm your registration.  Your account is now active.  Please log in <a id = 'loginOutConfirmation' href = 'login.php'>here</a> to begin using your account.</p>";
 
         $mailed = sendMail($to, $cc, $bcc, $from, $subject, $message);
 
@@ -148,12 +149,11 @@ if (isset($_GET["q"])) {
 ?>
 
 
-
+</article>
 <?php
 include "footer.php";
 if ($debug)
     print "<p>END OF PROCESSING</p>";
 ?>
-</article>
 </body>
 </html>

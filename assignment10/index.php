@@ -251,7 +251,7 @@ if (isset($_POST["btnSubmit"])) {
 // If its the first time coming to the form or there are errors we are going
 // to display the form.
     if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked with: end body submit
-        print "<h1>Your Request has ";
+        print "<h1 id = 'requestProcessed'>Your Request has ";
         if (!$mailed) {
             print "not ";
         }
@@ -299,10 +299,10 @@ if (isset($_POST["btnSubmit"])) {
               method="post"
               id="frmRegister">
             <fieldset class="wrapper">
-                <legend>Register Today</legend>
-                <p class="registerParagraph">This is the registration page!</p>
+                <legend>Register Here</legend>
+                <p class="registerParagraph">Fill out the fields below to register for BlipBloop</p>
                     <fieldset class="register">
-                        <legend>Contact Information</legend>
+                        <legend>Account Information</legend>
 
                         <label for="txtEmail" class="required">Email
                             <input type="text" id="txtEmail" name="txtEmail"

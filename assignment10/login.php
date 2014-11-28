@@ -57,8 +57,8 @@ if ($errorMsg) {
               method="post"
               id="frmRegister">
             <fieldset class="wrapper">
-                <legend>Register Today</legend>
-                <p class="registerParagraph">If you don't have an account, please register <a id = "loginOut" href = "index.php">here</a></p>
+                <legend>Sign In Here</legend>
+                <p class="registerParagraph">If you don't have an account, please register <a id = "loginOutConfirmation" href = "index.php">here</a></p>
                     <fieldset class="register">
                         <legend>Account Information</legend>
 

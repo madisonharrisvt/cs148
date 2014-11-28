@@ -110,6 +110,7 @@ nav ol{
     margin-left: auto;
     margin-right: auto;
     margin-top:0em;
+    margin-bottom: 0em;
     text-align: center;
     border-color: #FFFFFF;
     border-bottom: thin solid #FFF;
@@ -131,6 +132,15 @@ nav ol{
     float: right;
     width: 36.7777778%; /* 331px / 900px */
 }
+article#loggedInPanel{
+    opacity: 0.75;
+    filter: alpha(opacity=75);
+    background-color: #005B45;
+    margin-top: 0em;
+    margin-left: auto;
+    margin-right: auto;
+    color: #FFF;
+}
 /***************** header section *****************************/
 
 
@@ -146,6 +156,10 @@ header h1 {
     opacity: 0.75;
     filter: alpha(opacity=75);
 
+}
+
+h1#requestProcessed{
+    padding: 0.5em;
 }
 
 h2{
@@ -187,6 +201,12 @@ a:active {
 #loginOut{
     text-decoration: underline;
 }
+
+#loginOutConfirmation{
+    text-decoration: underline;
+    font-size: auto;
+    padding: 0em;
+}
 /***************** article section ****************************/
 /* un comment and see what happens */
 /*
@@ -198,6 +218,16 @@ overflow: auto;
 article p, article table{
     padding: .2em 8.48056537% .2em 8.48056537%; /* 48px / 566px */
     text-align: center;
+    margin-top: 0em;
+}
+
+article p#loginPanel{
+    padding: .2em 8.48056537% .2em 8.48056537%;
+    font-size: 15pt;
+}
+
+article p#confirmationText{
+    padding: 0em 1em 2em 1em;
 }
 /***************** aside section *****************************/
 aside {
@@ -238,6 +268,19 @@ footer{
     filter: alpha(opacity=80); /* For IE8 and earlier */
 }
 #login article#main{
+    float: none;
+    margin: auto; /* because of the fixed width this centers the form */
+    text-align: left;
+    max-width: 600px; /* not repsonive but fixed */  
+}
+
+#confirmation article#main, a{
+    border-radius: 20px;
+    color: #FFFFFF;
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+}
+#confirmation article#main{
     float: none;
     margin: auto; /* because of the fixed width this centers the form */
     text-align: left;
@@ -378,7 +421,7 @@ label.required{
     padding: 0.25em;
 }
 
-#txtDepartmentName, #txtCourseNumber, #txtBuilding, #txtTime, #txtLastName, #txtClassType,#txtEmail{
+#pwdPassword, #txtDepartmentName, #txtCourseNumber, #txtBuilding, #txtTime, #txtLastName, #txtClassType,#txtEmail{
     border-radius: 5px;
     padding: 0.35em;
 }
