@@ -10,6 +10,7 @@ read http://alistapart.com/article/responsive-web-design/
 body{
     margin: 36px auto;
     background-color:#FFFFFF;
+    background-image: url(dots.jpg);
 
     width: 100%; 
     height: 100%; 
@@ -105,13 +106,14 @@ body{
 nav ol{
     list-style-type: none;
     /*background-color: #FFD633;*/
+    background-color:#009999;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1em;
+    margin-top:0em;
     text-align: center;
-    border-style: solid;
     border-color: #FFFFFF;
-    border-bottom: thin solid #000;
+    border-bottom: thin solid #FFF;
+    padding: 0.5em;
 }
 #page{
     margin: 0 auto 53px;
@@ -134,12 +136,15 @@ nav ol{
 
 
 header h1 {
-    color: #000;
+    color: #FFF;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 100;
     font-size: 5em;
     text-align: center;
     margin: 0em;
+    background-color:#009999;
+    opacity: 0.75;
+    filter: alpha(opacity=75);
 
 }
 
@@ -156,7 +161,11 @@ h2{
 }
 /***************** navigation section *****************************/
 
-
+a{
+    color:#FFF;
+    padding: 0.5em;
+    font-size: 15pt;
+}
 a:link {
     text-decoration: none;
 }
@@ -166,11 +175,17 @@ a:visited {
 }
 
 a:hover {
+    color:#E6E6E6;
     text-decoration: none;
 }
 
 a:active {
+    color:#CFCFCF;
     text-decoration: none;
+}
+
+#loginOut{
+    text-decoration: underline;
 }
 /***************** article section ****************************/
 /* un comment and see what happens */
@@ -400,14 +415,13 @@ label.required{
     -webkit-border-top-left-radius:1em;
     -moz-border-radius-topright:1em;
     -moz-border-radius-topleft:1em;
-    border: thin solid #000;
+    border: thin solid #FFF;
     padding-top: 0.25em;
     padding-left: 0.5em;
     padding-right: 0.5em;
-    color: #000000;
+    color: #009999;
     font-size: 20px;
     font-weight: 400;
-    font-family: 'Josefin Sans', sans-serif;
     margin:1pt;
 }
 

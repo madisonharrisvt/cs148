@@ -79,7 +79,4 @@
     include "nav.php";
     ?>
 
-<div id="holder">
-    <div class="dot"></div>
-    <div class="pulse"></div>
 </div>
