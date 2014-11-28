@@ -288,6 +288,20 @@ footer{
     
 }
 
+article#main, a{
+    border-radius: 20px;
+    color: #FFFFFF;
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+}
+article#main{
+    float: none;
+    margin: auto; /* because of the fixed width this centers the form */
+    text-align: center;
+    max-width: 600px; /* not repsonive but fixed */
+    
+}
+
 #btnSubmit{
     border-radius: 5px;
     font-size: 15pt;
