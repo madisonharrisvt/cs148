@@ -124,7 +124,7 @@ nav ol{
 #main{
     float: left;
     width: 62.8888889%; /* 566px / 900px */
-    background-color: #3A703A;
+    background-color: #007256;
     margin: 1em;
 }
 #other{
@@ -224,6 +224,20 @@ footer{
     filter: alpha(opacity=80); /* For IE8 and earlier */
 }
 #index article#main{
+    float: none;
+    margin: auto; /* because of the fixed width this centers the form */
+    text-align: left;
+    max-width: 600px; /* not repsonive but fixed */
+    
+}
+
+#login article#main, a{
+    border-radius: 20px;
+    color: #FFFFFF;
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+}
+#login article#main{
     float: none;
     margin: auto; /* because of the fixed width this centers the form */
     text-align: left;

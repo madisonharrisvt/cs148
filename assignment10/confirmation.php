@@ -102,10 +102,7 @@ if (isset($_GET["q"])) {
         // notify admin
         $message = '<h2>The following Registration has been confirmed:</h2>';
 
-        $message = "<p>Click this link to approve this registration: ";
-        $message .= '<a href="' . $domain . $path_parts["dirname"] . '/approve.php?q=' . $key2 . '">Approve Registration</a></p>';
-        $message .= "<p>or copy and paste this url into a web browser: ";
-        $message .= $path_parts["dirname"] . '/approve.php?q=' . $key2 . "</p>";
+        $message = "<p>A user has been added to your system </p>";
 
         if ($debug)
             print "<p>" . $message;
@@ -132,7 +129,7 @@ if (isset($_GET["q"])) {
         $bcc = "";
         $from = "NOT WRONG site <noreply@yoursite.com>";
         $subject = "Bobs PLH Registration Confirmed";
-        $message = "<p>Thank you for taking the time to confirm your registration. Once your membership has been approved we look forward to sending you junk mail. Grader please dont' mark me wrong for not changing this.</p>";
+        $message = "<p>Thank you for taking the time to confirm your registration.  Your account is now active.</p>";
 
         $mailed = sendMail($to, $cc, $bcc, $from, $subject, $message);
 

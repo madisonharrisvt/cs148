@@ -38,7 +38,7 @@ include "top.php";
 //
 // SECTION: 1a.
 // variables for the classroom purposes to help find errors.
-$debug = false;
+$debug = true;
 if (isset($_GET["debug"])) { // ONLY do this in a classroom environment
     $debug = true;
 }
@@ -69,6 +69,7 @@ $password = "";
 // Initialize Error Flags one for each form element we validate
 // in the order they appear in section 1c.
 $emailERROR = false;
+$queryERROR = false;
 
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
@@ -145,91 +146,53 @@ if (isset($_POST["btnSubmit"])) {
 
         require_once('../bin/myDatabase.php');
 
-        $dbUserName = 'mharri11' . '_admin';
-        $whichPass = "a"; //flag for which one to use.
-        $dbName = strtoupper('mharri11') . '_BlipBloop';
+        $dbUserName = 'mharri11' . '_reader';
+        $whichPass = "r"; //flag for which one to use.
+        $dbName = strtoupper('mharri11') . '_UVM_Courses';
 
         $thisDatabase = new myDatabase($dbUserName, $whichPass, $dbName);
 
-        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        //
-        // SECTION: 2e Save Data
-        //
+        /* ##### html setup */
+        
+        $phpSelf = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES, "UTF-8");
+        $path_parts = pathinfo($phpSelf);
+        print '<body id="' . $path_parts['filename'] . '">';
 
-        $primaryKey = "";
-        $dataEntered = false;
-        try {
-            $thisDatabase->db->beginTransaction();
-            $query = 'INSERT INTO tblRegister VALUES (Null,?,CURRENT_TIMESTAMP,0,?);';#' SET fldEmailAddress = ?';
-            $data = array($email, $password);
-            if ($debug) {
-                print "<p>sql " . $query;
-                print"<p><pre>";
-                print_r($data);
-                print"</pre></p>";
-            }
-            $results = $thisDatabase->insert($query,$data);
-            $primaryKey = $thisDatabase->lastInsert();
-            if ($debug)
-                print "<p>pmk= " . $primaryKey; 
+        $query ="SELECT fldEmail, fldPassword FROM tblRegister WHERE fldEmail = ? AND fldPassword = ?;";
+        $data = array($email, $password);
 
-            // all sql statements are done so lets commit to our changes
-            $dataEntered = $thisDatabase->db->commit();
-            $dataEntered = true;
-            if ($debug)
-                print "<p>transaction complete ";
-        } catch (PDOExecption $e) {
-            $thisDatabase->db->rollback();
-            if ($debug)
-                print "Error!: " . $e->getMessage() . "</br>";
-            $errorMsg[] = "There was a problem with accpeting your data please contact us directly.";
+
+        /* ##### Step three
+         * Execute the query
+
+         *      */
+        $results = $thisDatabase->select($query);
+
+        
+         /* ##### Step four
+         * prepare output and loop through array
+
+         *      */
+        $numberRecords = count($results);
+        
+        if($numberRecords > 0){
+            $_SESSION["user"] = $_POST["txtEmail"];
+            header("Location: admin.php");
         }
-        // If the transaction was successful, give success message
-        if ($dataEntered) {
-            if ($debug)
-                print "<p>data entered now prepare keys ";
-            //#################################################################
-            // create a key value for confirmation
 
-            $query = "SELECT fldDateJoined FROM tblRegister WHERE pmkRegisterId=" . $primaryKey;
-            $results = $thisDatabase->select($query);
+        else{
+            $queryERROR = true;
+            $errorMsg[] = "Your username/password is incorrect";
+                if ($errorMsg) {
+                print '<div id="errors">';
+                print "<ol>\n";
+                foreach ($errorMsg as $err) {
+                    print "<li>" . $err . "</li>\n";
+                }
+                print "</ol>\n";
+                print '</div>';
+            }       
 
-            $dateSubmitted = $results[0]["fldDateJoined"];
-
-            $key1 = sha1($dateSubmitted);
-            $key2 = $primaryKey;
-
-            if ($debug)
-                print "<p>key 1: " . $key1;
-            if ($debug)
-                print "<p>key 2: " . $key2;
-
-
-            //#################################################################
-            //
-            //Put forms information into a variable to print on the screen
-            //
-
-            $messageA = '<h2>Thank you for registering.</h2>';
-
-            $messageB = "<p>Click this link to confirm your registration: ";
-            $messageB .= '<a href="' . $domain . $path_parts["dirname"] . '/confirmation.php?q=' . $key1 . '&amp;w=' . $key2 . '">Confirm Registration</a></p>';
-            $messageB .= "<p>or copy and paste this url into a web browser: ";
-            $messageB .= $domain . $path_parts["dirname"] . '/confirmation.php?q=' . $key1 . '&amp;w=' . $key2 . "</p>";
-
-            $messageC .= "<p><b>Email Address:</b><i>   " . $email . "</i></p>";
-
-            //##############################################################
-            //
-            // email the form's information
-            //
-            $to = $email; // the person who filled out the form
-            $cc = "";
-            $bcc = "mharri11@uvm.edu";
-            $from = "NOT WRONG site <noreply@yoursite.com>";
-            $subject = "CS 148 registration that I did not forget to change text";
-
-            $mailed = sendMail($to, $cc, $bcc, $from, $subject, $messageA . $messageB . $messageC);
         } //data entered  
     } // end form is valid
 } // ends if form was submitted.

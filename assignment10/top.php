@@ -59,7 +59,7 @@
             include "lib/validation-functions.php";
             include "lib/mail-message.php";
         }
-        else if ($path_parts['filename'] == "approve") {
+        else if ($path_parts['filename'] == "login") {
             include "lib/validation-functions.php";
             include "lib/mail-message.php";
         }
