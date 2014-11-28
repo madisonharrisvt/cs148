@@ -41,6 +41,7 @@ if (isset($_POST["btnSubmit"])) {
 } // ends if form was submitted.
 
 include('top.php');
+include "loggedIn.php";
 if ($errorMsg) {
     print '<div id="errors">';
     print "<ol>\n";
@@ -57,7 +58,7 @@ if ($errorMsg) {
               id="frmRegister">
             <fieldset class="wrapper">
                 <legend>Register Today</legend>
-                <p class="registerParagraph">If you don't have an account, please register here: <a href = "index.php"></a></p>
+                <p class="registerParagraph">If you don't have an account, please register <a id = "loginOut" href = "index.php">here</a></p>
                     <fieldset class="register">
                         <legend>Account Information</legend>
 

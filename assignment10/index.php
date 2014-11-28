@@ -30,8 +30,9 @@
  * email would make a good primary key as well which would prevent someone
  * from entering an email address in more than one record.
  */
-
+session_start();
 include "top.php";
+include "loggedIn.php";
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1 Initialize variables
