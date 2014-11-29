@@ -308,6 +308,47 @@ article#main{
     
 }
 
+#accountInfo{
+    background-color: #005B45;
+    border-radius: 20px;
+    color: #FFFFFF;
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+    float: left;
+    margin-left:1em;
+    width: 50%;
+    text-align: left;
+}
+
+#h1Account{
+    padding: 0.2em;
+    text-align: center;
+}
+
+#pAccount{
+    text-align: left;
+}
+
+#pBloop{
+    padding: 0em;
+    margin-left: 5em;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    text-align: left;
+}
+
+aside{
+    background-color: #005B45;
+    border-radius: 20px;
+    color: #FFFFFF;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    float: right;
+    margin-right:3em;
+    width: 40%;
+    text-align: center;
+}
+
 #btnSubmit{
     border-radius: 5px;
     font-size: 15pt;
