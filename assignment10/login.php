@@ -5,6 +5,7 @@ $email = "";
 $password = "";
 $emailERROR = false;
 $queryERROR = false;
+$confirmERROR = false;
 
 $errorMsg = array();
 
@@ -21,14 +22,22 @@ if (isset($_POST["btnSubmit"])) {
 
     if (!$errorMsg) {
 
-        $query ="SELECT fldEmailAddress, fldPassword FROM tblRegister WHERE fldEmailAddress = ? AND fldPassword = ? AND fldConfirmed=1;";
+        $query ="SELECT fldEmailAddress, fldPassword, fldConfirmed FROM tblRegister WHERE fldEmailAddress = ? AND fldPassword = ?;";
         $data = array($email, $password);
         $results = $thisDatabase->select($query, $data);
-        $numberRecords = count($results);
+        $numberRecords = count($results[0]);
+        $confirmed = $results[0][2];
         
-        if($numberRecords > 0){
-            $_SESSION["user"] = $_POST["txtEmail"];
-            header("Location: admin.php");
+        if($numberRecords >= 4){
+
+            if($results[0][2] == 0){
+                $confirmERROR = true;
+                $errorMsg[] = "You have not confirmed your email address yet.  Please confirm your account via email to continue.";
+            }
+            else{ 
+                $_SESSION["user"] = $_POST["txtEmail"];
+                header("Location: admin.php");
+            }
         }
 
         else{
@@ -40,6 +49,8 @@ if (isset($_POST["btnSubmit"])) {
 
 include('top.php');
 include "loggedIn.php";
+
+print '<article id="main">';
 if ($errorMsg) {
     print '<div id="errors">';
     print "<ol>\n";
@@ -50,7 +61,6 @@ if ($errorMsg) {
     print '</div>';
 } 
 ?>
-    <article id="main">
         <form action="<?php print $phpSelf; ?>"
               method="post"
               id="frmRegister">
@@ -64,7 +74,7 @@ if ($errorMsg) {
                             <input type="text" id="txtEmail" name="txtEmail"
                                    value="<?php print $email; ?>"
                                    tabindex="120" maxlength="45" placeholder="Enter a valid email address"
-                                   <?php if ($emailERROR) print 'class="mistake"'; ?>
+                                   <?php if ($queryERROR) print 'class="mistake"'; ?>
                                    onfocus="this.select()"
                                    >
                         </label>
@@ -72,6 +82,7 @@ if ($errorMsg) {
                             <input type="password" id="pwdPassword" name="pwdPassword"
                                    value="<?php print $password; ?>"
                                    tabindex="120" maxlength="45" placeholder = "password"
+                                    <?php if ($queryERROR) print 'class="mistake"'; ?>
                                    onfocus="this.select()"
                                    >
                         </label>

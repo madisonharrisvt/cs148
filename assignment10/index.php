@@ -272,8 +272,8 @@ if (isset($_POST["btnSubmit"])) {
         if (!$mailed) {
             print "not ";
         }
-        print "been processed</h1>";
-        print "<p>A copy of this message has ";
+        print "been processed.  </h1>";
+        print "<p>Please confirm your registration via email to finish account setup.</p><p>A copy of this message has ";
         if (!$mailed) {
             print "not ";
         }
