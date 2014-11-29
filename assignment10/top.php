@@ -51,7 +51,7 @@
 
         require_once('lib/security.php');
 
-        if ($path_parts['filename'] == "index") {
+        if ($path_parts['filename'] == "register") {
             include "lib/validation-functions.php";
             include "lib/mail-message.php";
         }

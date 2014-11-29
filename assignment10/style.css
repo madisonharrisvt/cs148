@@ -270,6 +270,20 @@ footer{
     
 }
 
+#editBloop article#main, a{
+    border-radius: 20px;
+    color: #FFFFFF;
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+}
+#editBLoop article#main{
+    float: none;
+    margin: auto; /* because of the fixed width this centers the form */
+    text-align: left;
+    max-width: 600px; /* not repsonive but fixed */
+    
+}
+
 #login article#main, a{
     border-radius: 20px;
     color: #FFFFFF;
@@ -322,14 +336,14 @@ article#main{
 }
 
 #h1Account{
-    padding-top: 0.25em;
-    padding-bottom: 0.25em;
+    padding-top: 0.5em;
+    padding-bottom: 0.15em;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 300;
     font-size: 25pt;
     opacity: 0.8;
     text-align: left;
-    padding-left: 0.25em;
+    padding-left: 0.5em;
     border-bottom: thin solid #FFF;
 
 }
@@ -339,9 +353,9 @@ article#main{
     font-weight: 300;
     font-size: 25pt;
     border-bottom: thin solid #FFF;
-    padding-bottom: 0.25em;
+    padding-bottom: 0.15em;
     text-align: left;
-    padding-left: 0.25em;
+    padding-left: 0.5em;
     padding-right: 0em;
 }
 
@@ -427,6 +441,7 @@ fieldset.wrapper legend {
     font-size: 1.2em;
     font-weight: bold;
     margin-top: 10px;
+    text-align: left;
 }
 fieldset.wrapper > legend {
     /* i only want the first legend ie if it follows the class wrapper */
@@ -446,6 +461,15 @@ label {
 /* style the list of errors that will show before the form */
 #errors ol li{
     color: #ff5555;
+    list-style-type: none;
+    text-align: center;
+    font-weight: 900;
+    padding-top: 1em;
+    font-size: 15pt;
+}
+
+#success ol li{
+    color: #66E066;
     list-style-type: none;
     text-align: center;
     font-weight: 900;
@@ -505,7 +529,7 @@ label.required{
     padding: 0.25em;
 }
 
-#pwdPasswordConfirm,#pwdPassword, #txtDepartmentName, #txtCourseNumber, #txtBuilding, #txtTime, #txtLastName, #txtClassType,#txtEmail{
+#txtColor,#txtName,#pwdPasswordConfirm,#pwdPassword, #txtDepartmentName, #txtCourseNumber, #txtBuilding, #txtTime, #txtLastName, #txtClassType,#txtEmail{
     border-radius: 5px;
     padding: 0.35em;
 }

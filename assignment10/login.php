@@ -66,7 +66,7 @@ if ($errorMsg) {
               id="frmRegister">
             <fieldset class="wrapper">
                 <legend>Sign In Here</legend>
-                <p class="registerParagraph">If you don't have an account, please register <a id = "loginOutConfirmation" href = "index.php">here</a></p>
+                <p class="registerParagraph">If you don't have an account, please register <a id = "loginOutConfirmation" href = "register.php">here</a></p>
                     <fieldset class="register">
                         <legend>Account Information</legend>
 

@@ -14,7 +14,7 @@
         /*if ($path_parts['filename'] == "form") {
             print '<li class="activePage">Join</li>';
         } else {*/
-            print '<li><a href="index.php">REGISTER</a></li><li><a href="index.php">WORLD</a></li><li><a id = "loginOut" href = "admin.php">ACCOUNT</a></li>';
+            print '<li><a href="register.php">REGISTER</a></li><li><a href="world.php">WORLD</a></li><li><a id = "loginOut" href = "index.php">ACCOUNT</a></li>';
        // }
         ?>
     </ol>
