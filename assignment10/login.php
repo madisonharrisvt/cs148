@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('db.php');
-$email = "youremail@uvm.edu";
+$email = "";
 $password = "";
 $emailERROR = false;
 $queryERROR = false;
@@ -18,14 +18,12 @@ if (isset($_POST["btnSubmit"])) {
         $errorMsg[] = "Your email address appears to be incorrect.";
         $emailERROR = true;
     }
+
     if (!$errorMsg) {
 
         $query ="SELECT fldEmailAddress, fldPassword FROM tblRegister WHERE fldEmailAddress = ? AND fldPassword = ? AND fldConfirmed=1;";
         $data = array($email, $password);
         $results = $thisDatabase->select($query, $data);
-
-        print_r($results);
-        print_r($data);
         $numberRecords = count($results);
         
         if($numberRecords > 0){
@@ -73,7 +71,7 @@ if ($errorMsg) {
                         <label for="pwdPassword" class="required">Password
                             <input type="password" id="pwdPassword" name="pwdPassword"
                                    value="<?php print $password; ?>"
-                                   tabindex="120" maxlength="45"
+                                   tabindex="120" maxlength="45" placeholder = "password"
                                    onfocus="this.select()"
                                    >
                         </label>

@@ -111,8 +111,8 @@ if (isset($_GET["q"])) {
         $to = $adminEmail;
         $cc = "";
         $bcc = "";
-        $from = "NOT WRONG site <noreply@yoursite.com>";
-        $subject = "New PLH Camp Membership Confirmed: Approve?";
+        $from = "BlipBloop <noreply@mharri11.w3.uvm.edu>";
+        $subject = "New BlipBloop Membership Confirmed";
 
         $mailed = sendMail($to, $cc, $bcc, $from, $subject, $message);
 
@@ -128,8 +128,8 @@ if (isset($_GET["q"])) {
         $to = $email;
         $cc = "";
         $bcc = "";
-        $from = "NOT WRONG site <noreply@yoursite.com>";
-        $subject = "Bobs PLH Registration Confirmed";
+        $from = "BlipBloop <noreply@mharri11.w3.uvm.edu>";
+        $subject = "BlipBloop Registration Confirmed";
         $message = "<p id = 'confirmationText'>Thank you for taking the time to confirm your registration.  Your account is now active.  Please log in <a id = 'loginOutConfirmation' href = 'login.php'>here</a> to begin using your account.</p>";
 
         $mailed = sendMail($to, $cc, $bcc, $from, $subject, $message);

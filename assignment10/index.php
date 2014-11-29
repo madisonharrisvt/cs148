@@ -60,8 +60,10 @@ $yourURL = $domain . $phpSelf;
 //
 // Initialize variables one for each form element
 // in the order they appear on the form
-$email = "youremail@uvm.edu";
+$email = "";
 $password = "";
+$passwordConfirm = "";
+
 
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
@@ -70,6 +72,7 @@ $password = "";
 // Initialize Error Flags one for each form element we validate
 // in the order they appear in section 1c.
 $emailERROR = false;
+$passwordError = false;
 
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
@@ -107,6 +110,7 @@ if (isset($_POST["btnSubmit"])) {
 // form. Note it is best to follow the same order as declared in section 1c.
     $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);
     $password = ($_POST["pwdPassword"]);
+    $passwordConfirm = ($_POST["pwdPasswordConfirm"]);
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //
@@ -125,6 +129,10 @@ if (isset($_POST["btnSubmit"])) {
     } elseif (!verifyEmail($email)) {
         $errorMsg[] = "Your email address appears to be incorrect.";
         $emailERROR = true;
+    }
+    if ($password != $passwordConfirm){
+        $errorMsg[] = "Your passwords do not match";
+        $passwordError = true;
     }
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -171,6 +179,15 @@ if (isset($_POST["btnSubmit"])) {
             }
             $results = $thisDatabase->insert($query,$data);
             $primaryKey = $thisDatabase->lastInsert();
+
+            $query = "SELECT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = ?";
+            $data = array($email);
+            $pmkRegisterID = $thisDatabase -> select($query,$data);
+
+            $data = array($pmkRegisterID[0][0]);
+            $query = 'INSERT INTO tblBloop (pmkRegisterId) VALUES (?);';
+            $results = $thisDatabase -> insert($query,$data);
+
             if ($debug)
                 print "<p>pmk= " . $primaryKey; 
 
@@ -227,8 +244,8 @@ if (isset($_POST["btnSubmit"])) {
             $to = $email; // the person who filled out the form
             $cc = "";
             $bcc = "mharri11@uvm.edu";
-            $from = "NOT WRONG site <noreply@yoursite.com>";
-            $subject = "CS 148 registration that I did not forget to change text";
+            $from = "BlipBloop <noreply@mharri11.w3.uvm.edu>";
+            $subject = "BlipBloop Registration";
 
             $mailed = sendMail($to, $cc, $bcc, $from, $subject, $messageA . $messageB . $messageC);
         } //data entered  
@@ -315,7 +332,16 @@ if (isset($_POST["btnSubmit"])) {
                         <label for="txtPassword" class="required">Password
                             <input type="password" id="pwdPassword" name="pwdPassword"
                                    value="<?php print $password; ?>"
-                                   tabindex="120" maxlength="45"
+                                   tabindex="120" maxlength="45" placeholder = "Password"
+                                   <?php if ($passwordError) print 'class="mistake"'; ?>
+                                   onfocus="this.select()"
+                                   >
+                        </label>
+                        <label for="pwdPasswordConfirm" class="required">Confirm Password
+                            <input type="password" id="pwdPasswordConfirm" name="pwdPasswordConfirm"
+                                   value="<?php print $passwordConfirm; ?>"
+                                   tabindex="120" maxlength="45" placeholder = "Confirm password"
+                                   <?php if ($passwordError) print 'class="mistake"'; ?>
                                    onfocus="this.select()"
                                    >
                         </label>

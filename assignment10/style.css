@@ -116,6 +116,12 @@ nav ol{
     border-bottom: thin solid #FFF;
     padding: 0.5em;
 }
+
+#main ol li{
+    text-align: center;
+    display: inherit;
+
+}
 #page{
     margin: 0 auto 53px;
     width: 93.75%; /* 900px / 960px */
@@ -435,7 +441,7 @@ label.required{
     padding: 0.25em;
 }
 
-#pwdPassword, #txtDepartmentName, #txtCourseNumber, #txtBuilding, #txtTime, #txtLastName, #txtClassType,#txtEmail{
+#pwdPasswordConfirm,#pwdPassword, #txtDepartmentName, #txtCourseNumber, #txtBuilding, #txtTime, #txtLastName, #txtClassType,#txtEmail{
     border-radius: 5px;
     padding: 0.35em;
 }
