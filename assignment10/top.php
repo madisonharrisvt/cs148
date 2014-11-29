@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Don't mark me wrong</title>
+        <title>BlipBloop</title>
         <meta charset="utf-8">
         <meta name="author" content="Don't mark me wrong">
-        <meta name="description" content="Don't mark me wrong for changing this">
+        <meta name="description" content="BlipBloop - the site where you BlipBloops">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
