@@ -369,6 +369,12 @@ article#main{
     margin: 0em;
 }
 
+#bloopP2{
+    padding: 0em;
+    margin: 0em;
+    text-align: center;
+}
+
 #bloopBox{
     width: none;
     float: left;

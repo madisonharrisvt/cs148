@@ -246,7 +246,7 @@ if ($errorMsg) {
 
             <?php
 
-            $circleToPrintStart = "<svg height =" . $size . " width = " . $size . "> <circle cx = " . $center . " cy = " . $center . " r = " . $radius . " fill = ";
+            $circleToPrintStart = "<svg height =" . $size . " width = " . $size . "> <circle cx = " . $center . " cy = " . $center . " r = " . $radius . " stroke='white' stroke-width='3' fill = ";
             $circleToPrintEnd = "  /> </svg>";
 
             print $circleToPrintStart . $color . $circleToPrintEnd;

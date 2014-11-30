@@ -28,25 +28,27 @@ else{
     print $results[0][1];
     print " r = ";
     print $results[0][2];
-    print " fill = ";
+    print " stroke='white' stroke-width='3' fill = ";
     print $results[0][3];
     print "  /> </svg>";
     print "<aside id = 'bloopInfo'>";
-    print "<p>Bloop's Name: " . $results[0][4] . "</p>";
-    print "<p>Bloop's Size: " . $results[0][0] . "lbs</p>";
-    print "<p>Number of Blips: " . $results[0][5] . "</p>";
+    print "<p id = 'bloopP2'>Bloop's Name: " . $results[0][4] . "</p>";
+    print "<p id = 'bloopP2'>Bloop's Size: " . $results[0][0] . "lbs</p>";
+    print "<p id = 'bloopP2'>Number of Blips: " . $results[0][5] . "</p>";
     print "</aside>";
 
-    print "<h1 id = 'h1Bloop'>All Bloops</h1>";
+    print "<h1 id = 'h1Bloop'>All Other Bloops</h1>";
 
-    $query ="SELECT fldSize, fldCenter, fldRadius, fldColor, fldName, fldBlipNumber FROM tblBloop WHERE pmkRegisterId IN(SELECT DISTINCT pmkRegisterId FROM tblRegister WHERE fldEmailAddress != ?)";
+    $query ="SELECT fldSize, fldCenter, fldRadius, fldColor, fldName, fldBlipNumber, pmkRegisterId FROM tblBloop WHERE pmkRegisterId IN(SELECT DISTINCT pmkRegisterId FROM tblRegister WHERE fldEmailAddress != ?)";
     $data = array($_SESSION['user']);
     $results = $thisDatabase->select($query, $data);
 
     /* since it is associative array display the field names */
     foreach ($results as $row) {
         print "<aside id = 'bloopBox'>";
-        print "<svg height =";
+        print "<a id = 'loginOut' href = 'blip.php?id=";
+        print $row[6];
+        print "'><svg height =";
         print $row[0];
         print " width = ";
         print $row[0];
@@ -56,13 +58,13 @@ else{
         print $row[1];
         print " r = ";
         print $row[2];
-        print " fill = ";
+        print " stroke='white' stroke-width='3' fill = ";
         print $row[3];
-        print "  /> </svg>";
+        print "  /> </svg></a>";
         print "<aside id = 'bloopP'>";
-        print "<p>Bloop's Name: " . $row[4] . "</p>";
-        print "<p>Bloop's Size: " . $row[0] . "lbs</p>";
-        print "<p>Number of Blips: " . $row[5] . "</p>";
+        print "<p id = 'bloopP2'>Bloop's Name: " . $row[4] . "</p>";
+        print "<p id = 'bloopP2'>Bloop's Size: " . $row[0] . "lbs</p>";
+        print "<p id = 'bloopP2'>Number of Blips: " . $row[5] . "</p>";
         print "</aside>";
         print "</aside>";
     }

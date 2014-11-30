@@ -35,7 +35,7 @@ else{
     print $results[0][1];
     print " r = ";
     print $results[0][2];
-    print " fill = ";
+    print " stroke='white' stroke-width='3' fill = ";
     print $results[0][3];
     print "  /> </svg>";
     print "<aside id = 'bloopInfo'>";
