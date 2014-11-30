@@ -359,6 +359,21 @@ article#main{
     padding-right: 0em;
 }
 
+#h1BloopWorld{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-size: 25pt;
+    border-bottom: thin solid #FFF;
+    padding-bottom: 0.15em;
+    text-align: left;
+    padding-left: 0.5em;
+    padding-right: 0em;
+    margin-top: 0em;
+    margin-bottom: 0.2em;
+
+}
+
+
 #pAccount{
     text-align: left;
 }
@@ -391,11 +406,29 @@ article#main{
 }
 
 #worldHolder{
-    width: 50%;
+    width: 100%;
 }
 
 #bloopP{
     width: auto;
+}
+
+#left{
+    float: left;
+    width: 50%;
+}
+
+#leftRight{
+    float: right;
+}
+
+#right{
+    float:right;
+    width: 50%;
+}
+
+#rightLeft{
+    float:left;
 }
 
 aside{
@@ -434,6 +467,7 @@ p.registerParagraph{
 
 form{
     padding: 1em;
+    padding-bottom: 0em;
 }
 
 /* need to clear any floats that may exist */
@@ -575,7 +609,7 @@ label.required{
     text-shadow: 0 1px 1px #1E6912;
     background: #5F8249; 
     font-size: 15pt;
-    margin-top: 1em;
+    margin-top: 0em;
 }
 
 #btnSubmit:hover{

@@ -130,9 +130,12 @@ if (!isset($_SESSION['user'])){
         }
         print "</ol>\n";
         print '</div>';
-    } 
+    }
 
-    print "<h1 id = 'h1Bloop'>My Bloop</h1>";
+    print "<article id = 'left'>";
+    print "<article id = 'leftRight'>"; 
+
+    print "<h1 id = 'h1BloopWorld'>My Bloop</h1>";
 
     $query ="SELECT fldSize, fldCenter, fldRadius, fldColor, fldName, fldBlipNumber FROM tblBloop WHERE pmkRegisterId IN(SELECT DISTINCT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = ?)";
     $data = array($_SESSION['user']);
@@ -160,7 +163,13 @@ if (!isset($_SESSION['user'])){
     print "<p id = 'bloopP2'>Number of Blips: " . $results[0][5] . "</p>";
     print "</aside>";
 
-    print "<h1 id = 'h1Bloop'>Their Bloop</h1>";
+    print "</article>";
+    print "</article>";
+
+    print "<article id = 'right'>";
+    print "<article id = 'rightLeft'>";
+
+    print "<h1 id = 'h1BloopWorld'>Their Bloop</h1>";
 
     $query ="SELECT fldSize, fldCenter, fldRadius, fldColor, fldName, fldBlipNumber FROM tblBloop WHERE pmkRegisterId = ?";
     $data = array($id);
@@ -186,6 +195,8 @@ if (!isset($_SESSION['user'])){
     print "<p id = 'bloopP2'>Bloop's Name: " . $results[0][4] . "</p>";
     print "<p id = 'bloopP2'>Bloop's Size: " . $results[0][0] . "lbs</p>";
     print "<p id = 'bloopP2'>Number of Blips: " . $results[0][5] . "</p>";
+    print "</article>";
+    print "</aritcle>";
     print "</aside>";
 
     
