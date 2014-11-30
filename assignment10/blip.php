@@ -62,7 +62,7 @@ if (!isset($_SESSION['user'])){
             $sizeERROR = true;
         }
 
-        if($myRadius > 100){
+        if($myRadius > 500){
             $errorMsg[] = "Your Bloop is too large to blip!";
             $mySizeERROR = true;
         }
@@ -95,6 +95,21 @@ if (!isset($_SESSION['user'])){
     print "<article id = 'accountInfo'>";
     print "<aside id = 'worldHolder'>";
     print "<aside id = 'world'>";
+
+    ?>
+
+    <form action="<?php print $phpSelf; ?>"
+              method="post"
+              id="frmRegister">
+                <fieldset class="buttons">
+                    <legend></legend>
+                    <input type="submit" id="btnSubmit" name="btnSubmit" value="Blip!" tabindex="900" class="button">
+                    <input type="hidden" name="hiddenID" value= <?php print $id; ?> >
+                </fieldset> <!-- ends buttons -->
+            </fieldset> <!-- Ends Wrapper -->
+        </form>
+
+    <?php
 
     if ($errorMsg) {
         print '<div id="errors">';
@@ -143,27 +158,6 @@ if (!isset($_SESSION['user'])){
     print "</aside>";
 
     print "<h1 id = 'h1Bloop'>Their Bloop</h1>";
-
-    ?>
-
-    <form action="<?php print $phpSelf; ?>"
-              method="post"
-              id="frmRegister">
-                <fieldset class="buttons">
-                    <legend></legend>
-                    <input type="submit" id="btnSubmit" name="btnSubmit" value="Blip!" tabindex="900" class="button">
-                    <input type="hidden" name="hiddenID" value= <?php print $id; ?> >
-                    <input type="hidden" name="hiddenSize" value= <?php print $size; ?> >
-                    <input type="hidden" name="hiddenCenter" value= <?php print $center; ?> >
-                    <input type="hidden" name="hiddenRadius" value= <?php print $radius; ?> >
-                    <input type="hidden" name="hiddenMySize" value= <?php print $mySize; ?> >
-                    <input type="hidden" name="hiddenMyCenter" value= <?php print $myCenter; ?> >
-                    <input type="hidden" name="hiddenMyRadius" value= <?php print $myRadius; ?> >
-                </fieldset> <!-- ends buttons -->
-            </fieldset> <!-- Ends Wrapper -->
-        </form>
-
-    <?php
 
     $query ="SELECT fldSize, fldCenter, fldRadius, fldColor, fldName, fldBlipNumber FROM tblBloop WHERE pmkRegisterId = ?";
     $data = array($id);

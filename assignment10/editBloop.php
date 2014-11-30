@@ -85,7 +85,7 @@ if ($errorMsg) {
                         <label for="txtName" class="required">Name
                             <input type="text" id="txtName" name="txtName"
                                    value="<?php print $name; ?>"
-                                   tabindex="120" maxlength="45" placeholder="Enter your Bloop's name here"
+                                   tabindex="120" maxlength="20" placeholder="Enter your Bloop's name here"
                                    <?php if ($nameERROR) print 'class="mistake"'; ?>
                                    onfocus="this.select()"
                                    >
