@@ -1,4 +1,4 @@
 <!-- ######################     Page header   ############################## -->
 <header>
-    <h1>BlipBloop</h1>
+    <a href = "index.php"><h1>BlipBloop</h1></a>
 </header>

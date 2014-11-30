@@ -36,7 +36,7 @@ if (isset($_POST["btnSubmit"])) {
             }
             else{ 
                 $_SESSION["user"] = $_POST["txtEmail"];
-                header("Location: admin.php");
+                header("Location: index.php");
             }
         }
 
@@ -89,7 +89,7 @@ if ($errorMsg) {
                     </fieldset> <!-- ends contact -->
                 <fieldset class="buttons">
                     <legend></legend>
-                    <input type="submit" id="btnSubmit" name="btnSubmit" value="Register" tabindex="900" class="button">
+                    <input type="submit" id="btnSubmit" name="btnSubmit" value="Login" tabindex="900" class="button">
                 </fieldset> <!-- ends buttons -->
             </fieldset> <!-- Ends Wrapper -->
         </form>

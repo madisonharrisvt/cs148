@@ -375,6 +375,10 @@ article#main{
     text-align: center;
 }
 
+#bloopP3{
+    padding: 1em;
+}
+
 #bloopBox{
     width: none;
     float: left;

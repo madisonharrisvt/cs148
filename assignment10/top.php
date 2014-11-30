@@ -3,7 +3,7 @@
     <head>
         <title>BlipBloop</title>
         <meta charset="utf-8">
-        <meta name="author" content="Don't mark me wrong">
+        <meta name="author" content="BlipBoop">
         <meta name="description" content="BlipBloop - the site where you BlipBloops">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">

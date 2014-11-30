@@ -29,7 +29,7 @@ if (isset($_POST["btnSubmit"])) {
         $nameERROR = true;
     }
 
-    elseif(strlen($name) > 20){
+    elseif(strlen($name) > 30){
       $errorMsg[] = "Your name is too long (> 20 characters)";
       $nameERROR = true;
     }
@@ -85,7 +85,7 @@ if ($errorMsg) {
                         <label for="txtName" class="required">Name
                             <input type="text" id="txtName" name="txtName"
                                    value="<?php print $name; ?>"
-                                   tabindex="120" maxlength="20" placeholder="Enter your Bloop's name here"
+                                   tabindex="120" maxlength="30" placeholder="Enter your Bloop's name here"
                                    <?php if ($nameERROR) print 'class="mistake"'; ?>
                                    onfocus="this.select()"
                                    >

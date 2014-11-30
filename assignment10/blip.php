@@ -14,6 +14,7 @@ $results = $thisDatabase->select($query, $data);
 $mySize = $results[0][0];
 $myCenter = $results[0][1];
 $myRadius = $results[0][2];
+$myBlipNumber = $results[0][5];
 
 $query ="SELECT fldSize, fldCenter, fldRadius, fldColor, fldName, fldBlipNumber FROM tblBloop WHERE pmkRegisterId = ?";
 $data = array($id);
@@ -47,6 +48,7 @@ if (!isset($_SESSION['user'])){
         $mySize = $results[0][0];
         $myCenter = $results[0][1];
         $myRadius = $results[0][2];
+        $myBlipNumber = $results[0][5];
 
         $query ="SELECT fldSize, fldCenter, fldRadius, fldColor, fldName, fldBlipNumber FROM tblBloop WHERE pmkRegisterId = ?";
         $data = array($id);
@@ -62,7 +64,7 @@ if (!isset($_SESSION['user'])){
             $sizeERROR = true;
         }
 
-        if($myRadius > 500){
+        if($myRadius > 300){
             $errorMsg[] = "Your Bloop is too large to blip!";
             $mySizeERROR = true;
         }
@@ -76,9 +78,10 @@ if (!isset($_SESSION['user'])){
             $mySize = $mySize + 5;
             $myCenter = $mySize / 2;
             $myRadius = $myCenter - 10;
+            $myBlipNumber = $myBlipNumber + 1;
 
-            $query = "UPDATE tblBloop SET fldSize = ?, fldCenter = ?, fldRadius = ? WHERE pmkRegisterId IN(SELECT DISTINCT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = ?);";
-            $data = array($mySize,$myCenter,$myRadius,$_SESSION['user']);
+            $query = "UPDATE tblBloop SET fldSize = ?, fldCenter = ?, fldRadius = ?, fldBlipNumber = ? WHERE pmkRegisterId IN(SELECT DISTINCT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = ?);";
+            $data = array($mySize,$myCenter,$myRadius,$myBlipNumber,$_SESSION['user']);
             $results = $thisDatabase -> update($query,$data);
 
             $query = "UPDATE tblBloop SET fldSize = ?, fldCenter = ?, fldRadius = ? WHERE pmkRegisterId = ?;";

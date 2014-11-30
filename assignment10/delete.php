@@ -9,17 +9,29 @@ if (!isset($_SESSION['user'])){
 }
 else{
 
+    if (isset($_POST["btnSubmit"])) {
+
+        $query = "DELETE FROM tblBloop WHERE pmkRegisterId IN(SELECT DISTINCT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = ?);";
+        $data = array($_SESSION['user']);
+        $results = $thisDatabase -> delete($query,$data);
+
+        $query = "DELETE FROM tblRegister WHERE fldEmailAddress = ?;";
+        $data = array($_SESSION['user']);
+        $results = $thisDatabase -> delete($query,$data);
+
+        header("Location: logout.php");
+        
+    } // ends if form was submitted.
+
     print "<article id = 'accountInfo'>";
     print "<aside>";
 
-    print "<h1 id = 'h1Account'> My Account <a id = 'loginOut' href = 'delete.php'>Delete Account</a></h1>";
+    print "<h1 id = 'h1Account'> My Account</h1>";
 
     $query ="SELECT fldDateJoined FROM tblRegister WHERE fldEmailAddress = ?;";
     $data = array($_SESSION['user']);
     $results = $thisDatabase->select($query, $data);
-    print "<p id = 'pAccount'>Email Address: " . $_SESSION['user'].  "</p>";
-    print "<p id = 'pAccount'>Date Joined: ". $results[0][0] ."</p>";
-    print "<h1 id = 'h1Bloop'>My Bloop <a id = 'loginOut' href = 'editBloop.php'>Edit</a></h1>";
+    print "<p id = 'bloopP3'> Are you sure you want to delete this account? </p>";
 
     $query ="SELECT fldSize, fldCenter, fldRadius, fldColor, fldName, fldBlipNumber FROM tblBloop WHERE pmkRegisterId IN(SELECT DISTINCT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = ?)";
     $data = array($_SESSION['user']);
@@ -38,14 +50,20 @@ else{
     print " stroke='white' stroke-width='3' fill = ";
     print $results[0][3];
     print "  /> </svg>";
-    print "<aside id = 'bloopInfo'>";
-    print "<p id = 'pBloop'>Bloop's Name: " . $results[0][4] . "</p>";
-    print "<p id = 'pBloop'>Bloop's Size: " . $results[0][0] . "lbs</p>";
-    print "<p id = 'pBloop'>Number of Blips: " . $results[0][5] . "</p>";
-    print "</aside>";
-    print "</aside>";
-    print "</article>";
+    print "<p id = 'bloopP3'> I'll miss you! :( </p>";
 ?>
+
+    <form action="<?php print $phpSelf; ?>"
+              method="post"
+              id="frmRegister">
+                <fieldset class="buttons">
+                    <legend></legend>
+                    <input type="submit" id="btnSubmit" name="btnSubmit" value="DELETE" tabindex="900" class="button">
+                </fieldset> <!-- ends buttons -->
+            </fieldset> <!-- Ends Wrapper -->
+        </form>
+    </aside>
+</article>
 
 <?php    
 }
