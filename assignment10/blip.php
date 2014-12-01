@@ -64,7 +64,7 @@ if (!isset($_SESSION['user'])){
             $sizeERROR = true;
         }
 
-        if($myRadius > 300){
+        if($myRadius > 200){
             $errorMsg[] = "Your Bloop is too large to blip!";
             $mySizeERROR = true;
         }
@@ -80,12 +80,12 @@ if (!isset($_SESSION['user'])){
             $myRadius = $myCenter - 10;
             $myBlipNumber = $myBlipNumber + 1;
 
-            $query = "UPDATE tblBloop SET fldSize = ?, fldCenter = ?, fldRadius = ?, fldBlipNumber = ? WHERE pmkRegisterId IN(SELECT DISTINCT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = ?);";
-            $data = array($mySize,$myCenter,$myRadius,$myBlipNumber,$_SESSION['user']);
+            $query = "UPDATE tblBloop SET fldSize = fldSize + 5, fldCenter = fldSize / 2, fldRadius = fldCenter - 10, fldBlipNumber = fldBlipNumber + 1 WHERE pmkRegisterId IN(SELECT DISTINCT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = ?);";
+            $data = array($_SESSION['user']);
             $results = $thisDatabase -> update($query,$data);
 
-            $query = "UPDATE tblBloop SET fldSize = ?, fldCenter = ?, fldRadius = ? WHERE pmkRegisterId = ?;";
-            $data = array($size,$center,$radius,$id);
+            $query = "UPDATE tblBloop SET fldSize = fldSize - 5, fldCenter = fldSize / 2, fldRadius = fldCenter - 10 WHERE pmkRegisterId = ?;";
+            $data = array($id);
             $results = $thisDatabase -> update($query,$data);
 
 
@@ -106,12 +106,12 @@ if (!isset($_SESSION['user'])){
             if($count > 0){
                $blipNumber = $results[0][0] + 1;
                 
-                $query = 'UPDATE tblFriendship SET fldBlipNumber = ? WHERE fldBlipeeId = ? AND fldBliperId = ?;';
-                $data = array($blipNumber,$id,$myId);
+                $query = 'UPDATE tblFriendship SET fldBlipNumber = fldBlipNumber + 1 WHERE fldBlipeeId = ? AND fldBliperId = ?;';
+                $data = array($id,$myId);
                 $results = $thisDatabase -> update($query,$data);
             } else{
 
-                $query = 'INSERT INTO tblFriendship VALUES (Null,?,?,0);';
+                $query = 'INSERT INTO tblFriendship VALUES (Null,?,?,1);';
                 $data = array($myId,$id);
                 $results = $thisDatabase -> insert($query,$data);
 

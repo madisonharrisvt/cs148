@@ -11,6 +11,32 @@ else{
 
     if (isset($_POST["btnSubmit"])) {
 
+
+        $query = 'SELECT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = ?';
+        $data = array($_SESSION['user']);
+        $results = $thisDatabase -> select($query,$data);
+
+        $myId = $results[0][0];
+
+        $query = 'SELECT fldSize FROM tblBloop WHERE pmkRegisterId = ?;';
+        $data = array($myId);
+        $results = $thisDatabase -> select($query,$data);
+
+        $size = $results[0][0];
+
+        $query = 'SELECT COUNT(*) FROM tblBloop;';
+        $results = $thisDatabase -> select($query);
+
+        $average = $size / $results[0][0];
+
+        $query = 'UPDATE tblBloop SET fldSize = fldSize + ?, fldCenter = fldSize / 2, fldRadius = fldCenter - 10;';
+        $data = array($average);
+        $results = $thisDatabase -> update($query,$data);
+
+        $query = "DELETE FROM tblFriendship WHERE fldBliperId = ? OR fldBlipeeId = ?;";
+        $data = array($myId,$myId);
+        $results = $thisDatabase -> delete($query,$data);
+
         $query = "DELETE FROM tblBloop WHERE pmkRegisterId IN(SELECT DISTINCT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = ?);";
         $data = array($_SESSION['user']);
         $results = $thisDatabase -> delete($query,$data);

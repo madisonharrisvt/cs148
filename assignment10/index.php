@@ -45,7 +45,7 @@ else{
 
     $myBlipeeName = $results[0][0];
 
-    if($minValue == 0 && $minId = 0){
+    if($minValue == 0 OR $minId = 0){
         print '<p id = "pAccount">You have not blipped anyone yet!</p>';
     }else{
     print "<p id = 'pAccount'>You have blipped ". $myBlipeeName ." the most (". $minValue ." blips)</p>";
