@@ -44,6 +44,11 @@ else{
     print "<h1 id = 'h1Bloop'>All Other Bloops</h1>";
     print "<h1 id = 'demoHover'>Click on a bloop!</h1>";
 
+    $query = "SELECT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = 'mharri11@uvm.edu';";
+    $results = $thisDatabase -> select($query);
+
+    $adminId = $results[0][0];
+
     $query ="SELECT fldSize, fldCenter, fldRadius, fldColor, fldName, fldBlipNumber, pmkRegisterId FROM tblBloop WHERE pmkRegisterId IN(SELECT DISTINCT pmkRegisterId FROM tblRegister WHERE fldEmailAddress != ?)";
     $data = array($_SESSION['user']);
     $results = $thisDatabase->select($query, $data);
@@ -64,7 +69,11 @@ else{
         print $row[1];
         print " r = ";
         print $row[2];
+        if($row[6] == $adminId){
+        print " stroke='black' stroke-width='3' fill = ";
+        }else{
         print " stroke='white' stroke-width='3' fill = ";
+        }
         print $row[3];
         print "  /> </svg></a></div>";
         //print "<aside id = 'bloopP'>";

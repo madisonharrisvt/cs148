@@ -4,6 +4,11 @@ include'top.php';
 include "loggedIn.php";
 include('db.php');
 
+if (!isset($_SESSION['user'])){
+    print "<article id='main'><p>You don't appear to be logged in.</p> <p> Please sign in <a id = 'loginOut' href = 'login.php'> here </a> or create an account <a id = 'loginOut' href = 'register.php'> here </a></p></article>";
+}
+else{
+
 $id = $_GET['id'];
 
 
@@ -23,6 +28,17 @@ $results = $thisDatabase->select($query, $data);
 $size = $results[0][0];
 $center = $results[0][1];
 $radius = $results[0][2];
+
+$query = "SELECT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = 'mharri11@uvm.edu';";
+$results = $thisDatabase -> select($query);
+
+$adminId = $results[0][0];
+
+$query = 'SELECT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = ?';
+$data = array($_SESSION['user']);
+$results = $thisDatabase -> select($query,$data);
+
+$myId = $results[0][0];
 
 $sizeERROR = false;
 $mySizeERROR = false;
@@ -183,7 +199,11 @@ if (!isset($_SESSION['user'])){
     print " r = ";
     print $results[0][2];
     $myRadius = $results[0][2];
-    print " stroke='white' stroke-width='3' fill = ";
+    if($myId == $adminId){
+        print " stroke='black' stroke-width='3' fill = ";
+    }else{
+        print " stroke='white' stroke-width='3' fill = ";
+    }
     print $results[0][3];
     print "  /> </svg>";
     print "<aside id = 'bloopInfo'>";
@@ -200,7 +220,7 @@ if (!isset($_SESSION['user'])){
 
     print "<h1 id = 'h1BloopWorld'>Their Bloop</h1>";
 
-    $query ="SELECT fldSize, fldCenter, fldRadius, fldColor, fldName, fldBlipNumber FROM tblBloop WHERE pmkRegisterId = ?";
+    $query ="SELECT fldSize, fldCenter, fldRadius, fldColor, fldName, fldBlipNumber, pmkRegisterId FROM tblBloop WHERE pmkRegisterId = ?";
     $data = array($id);
     $results = $thisDatabase->select($query, $data);
 
@@ -217,7 +237,11 @@ if (!isset($_SESSION['user'])){
     print " r = ";
     print $results[0][2];
     $radius = $results[0][2];
-    print " stroke='white' stroke-width='3' fill = ";
+    if($results[0][6] == $adminId){
+        print " stroke='black' stroke-width='3' fill = ";
+    }else{
+        print " stroke='white' stroke-width='3' fill = ";
+    }
     print $results[0][3];
     print "  /> </svg>";
     print "<aside id = 'bloopInfo'>";
@@ -235,7 +259,7 @@ if (!isset($_SESSION['user'])){
 ?>
 
 <?php    
-}
+}}
     include "footer.php";
 ?>
 </body>

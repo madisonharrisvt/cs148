@@ -765,3 +765,18 @@ div{
 #demoHover{
     height: 20px;
 }
+
+.checkbox,.radio{
+    border-radius: 10px;
+}
+
+#radCross-Country-Skiing{
+    display:inline;
+}
+
+p.registerParagraph2{
+    font-style: italic;
+    font-size: 15pt;
+    padding-bottom: 0em;
+    margin-bottom: 0.3em;
+}

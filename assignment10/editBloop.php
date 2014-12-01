@@ -1,7 +1,24 @@
 <?php
 session_start();
 include('db.php');
+include('top.php');
+include "loggedIn.php";
 
+if (!isset($_SESSION['user'])){
+    print "<article id='main'><p>You don't appear to be logged in.</p> <p> Please sign in <a id = 'loginOut' href = 'login.php'> here </a> or create an account <a id = 'loginOut' href = 'register.php'> here </a></p></article>";
+}
+else{
+
+$query = 'SELECT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = ?';
+$data = array($_SESSION['user']);
+$results = $thisDatabase -> select($query,$data);
+
+$myId = $results[0][0];
+
+$query = "SELECT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = 'mharri11@uvm.edu';";
+$results = $thisDatabase -> select($query);
+
+$adminId = $results[0][0];
 
 $query ="SELECT fldSize, fldCenter, fldRadius, fldColor, fldName, fldBlipNumber FROM tblBloop WHERE pmkRegisterId IN(SELECT DISTINCT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = ?)";
 $data = array($_SESSION['user']);
@@ -49,9 +66,6 @@ if (isset($_POST["btnSubmit"])) {
          //data entered  
     } // end form is valid
 } // ends if form was submitted.
-
-include('top.php');
-include "loggedIn.php";
 
 print '<article id="main">';
 if ($errorMsg) {
@@ -246,7 +260,15 @@ if ($errorMsg) {
 
             <?php
 
-            $circleToPrintStart = "<svg height =" . $size . " width = " . $size . "> <circle cx = " . $center . " cy = " . $center . " r = " . $radius . " stroke='white' stroke-width='3' fill = ";
+            $circleToPrintStart = "<svg height =" . $size . " width = " . $size . "> <circle cx = " . $center . " cy = " . $center . " r = " . $radius;
+
+
+            if($myId == $adminId){
+              $circleToPrintStart .= " stroke='black' stroke-width='3' fill = ";
+            }else{
+              $circleToPrintStart .= " stroke='white' stroke-width='3' fill = ";
+            }
+            
             $circleToPrintEnd = "  /> </svg>";
 
             print $circleToPrintStart . $color . $circleToPrintEnd;
@@ -269,6 +291,7 @@ if ($errorMsg) {
 
 
 <?php
+}
 include "footer.php";
 ?>
 </body>

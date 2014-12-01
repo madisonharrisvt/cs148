@@ -9,6 +9,17 @@ if (!isset($_SESSION['user'])){
 }
 else{
 
+    $query = 'SELECT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = ?';
+    $data = array($_SESSION['user']);
+    $results = $thisDatabase -> select($query,$data);
+
+    $myId = $results[0][0];
+
+    $query = "SELECT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = 'mharri11@uvm.edu';";
+    $results = $thisDatabase -> select($query);
+
+    $adminId = $results[0][0];
+
     print "<article id = 'accountInfo'>";
     print "<aside>";
 
@@ -71,7 +82,11 @@ else{
     print $results[0][1];
     print " r = ";
     print $results[0][2];
-    print " stroke='white' stroke-width='3' fill = ";
+    if($myId == $adminId){
+        print " stroke='black' stroke-width='3' fill = ";
+    }else{
+        print " stroke='white' stroke-width='3' fill = ";
+    }
     print $results[0][3];
     print "  /> </svg>";
     print "<aside id = 'bloopInfo'>";

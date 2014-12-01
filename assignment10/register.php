@@ -346,7 +346,55 @@ if (isset($_POST["btnSubmit"])) {
                                    >
                         </label>
                     </fieldset> <!-- ends contact -->
+                    <fieldset class="checkbox">
+                    <legend>Additional Information:</legend>
+                    <label for="chkRequired"><input type="checkbox" 
+                                                       id="chkRequired" 
+                                                       name="chkRequired" 
+                                                       value="2">Agree to the Terms of Service (not required)
+                    </label>
+                    <label for="chkNewsletter"><input type="checkbox" 
+                                                                id="chkNewsletter" 
+                                                                name="chkNewsletter" 
+                                                                value="3">Subscribe to our news letter (coming soon!)
+                    </label>
+                    <label for="chkDailyDeals"><input type="checkbox" 
+                                                                id="chkDailyDeals" 
+                                                                name="chkDailyDeals" 
+                                                                value="3">Subscribe to our Daily Deals (coming soon!)
+                    </label>
+
+
+                </fieldset>
+                <fieldset class="radio">
+                    <legend>We appreciate your feedback!</legend>
+                        <p class="registerParagraph2">I love this site, and I'll tell all of my friends!</p>
+
+
+                    <label for="radAgree">
+                        <input type="radio" 
+                               id="radAgree" 
+                               name="radFeedback" 
+                               value="2">Oh yeah I will! It's the bomb, yo!
+                    </label>
+
+                    <label for="radUnsure">
+                        <input type="radio" 
+                               id="radUnsure" 
+                               name="radFeedback" 
+                               value="3">I don't know, I haven't used it yet.
+                    </label>
+
+                    <label for="radDisagree">
+                        <input type="radio" 
+                               id="radDisagree" 
+                               name="radFeedback" 
+                               value="3">No, no one on Earth on should use it.
+                    </label>
+
+                </fieldset>
                 <fieldset class="buttons">
+
                     <legend></legend>
                     <input type="submit" id="btnSubmit" name="btnSubmit" value="Register" tabindex="900" class="button">
                 </fieldset> <!-- ends buttons -->
