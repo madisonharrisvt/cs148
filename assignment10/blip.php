@@ -88,6 +88,35 @@ if (!isset($_SESSION['user'])){
             $data = array($size,$center,$radius,$id);
             $results = $thisDatabase -> update($query,$data);
 
+
+            $query = 'SELECT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = ?';
+            $data = array($_SESSION['user']);
+            $results = $thisDatabase -> select($query,$data);
+
+            $myId = $results[0][0];
+
+            $query = 'SELECT fldBlipNumber FROM tblFriendship WHERE fldBlipeeId = ? AND fldBliperId = ?;';
+            $data = array($id,$myId);
+            $results = $thisDatabase -> select($query,$data);
+
+            $count = count($results);
+
+
+
+            if($count > 0){
+               $blipNumber = $results[0][0] + 1;
+                
+                $query = 'UPDATE tblFriendship SET fldBlipNumber = ? WHERE fldBlipeeId = ? AND fldBliperId = ?;';
+                $data = array($blipNumber,$id,$myId);
+                $results = $thisDatabase -> update($query,$data);
+            } else{
+
+                $query = 'INSERT INTO tblFriendship VALUES (Null,?,?,0);';
+                $data = array($myId,$id);
+                $results = $thisDatabase -> insert($query,$data);
+
+            }
+
             $complete = true;
             $successMsg[] = "Successfully updated Bloop";
 

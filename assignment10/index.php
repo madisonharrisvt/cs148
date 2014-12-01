@@ -19,7 +19,43 @@ else{
     $results = $thisDatabase->select($query, $data);
     print "<p id = 'pAccount'>Email Address: " . $_SESSION['user'].  "</p>";
     print "<p id = 'pAccount'>Date Joined: ". $results[0][0] ."</p>";
+
+    $query = 'SELECT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = ?';
+    $data = array($_SESSION['user']);
+    $results = $thisDatabase -> select($query,$data);
+
+    $myId = $results[0][0];
+
+    $query = 'SELECT fldBlipeeId,fldBlipNumber FROM tblFriendship WHERE fldBliperId = ?';
+    $data = array($myId);
+    $results = $thisDatabase -> select($query,$data);
+
+    $minValue = 0;
+    $minId = 0;
+    foreach ($results as $row) {
+        if($row[1] > $minValue){
+            $minValue = $row[1];
+            $minId = $row[0];
+        }
+    }
+
+    $query = 'SELECT fldName FROM tblBloop WHERE pmkRegisterId = ?';
+    $data = array($minId);
+    $results = $thisDatabase -> select($query,$data);
+
+    $myBlipeeName = $results[0][0];
+
+    if($minValue == 0 && $minId = 0){
+        print '<p id = "pAccount">You have not blipped anyone yet!</p>';
+    }else{
+    print "<p id = 'pAccount'>You have blipped ". $myBlipeeName ." the most (". $minValue ." blips)</p>";
+    }
+
+
+
+
     print "<h1 id = 'h1Bloop'>My Bloop <a id = 'loginOut' href = 'editBloop.php'>Edit</a></h1>";
+
 
     $query ="SELECT fldSize, fldCenter, fldRadius, fldColor, fldName, fldBlipNumber FROM tblBloop WHERE pmkRegisterId IN(SELECT DISTINCT pmkRegisterId FROM tblRegister WHERE fldEmailAddress = ?)";
     $data = array($_SESSION['user']);
